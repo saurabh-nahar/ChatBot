@@ -59,16 +59,16 @@ app.post(`/`, async (req, res) => {
 app.listen(port, async () => {
   console.log(`Server is running on port ${port}`);
 
-  // try {
-  //   const response = await axios.post(`${TELEGRAM_API}${process.env.TOKEN}/setWebhook`, {
-  //     url: `${process.env.WEBHOOK_URL}`,
-  //   });
-  //   if (response.data.ok) {
-  //     console.log("Webhook set successfully");
-  //   } else {
-  //     console.error("Failed to set webhook:", response.data.description);
-  //   }
-  // } catch (error) {
-  //   console.error("Error setting webhook:", error);
-  // }
+  try {
+    const response = await axios.post(`${TELEGRAM_API}${process.env.TOKEN}/setWebhook`, {
+      url: `${process.env.WEBHOOK_URL}`,
+    });
+    if (response.data.ok) {
+      console.log("Webhook set successfully");
+    } else {
+      console.error("Failed to set webhook:", response.data.description);
+    }
+  } catch (error) {
+    console.error("Error setting webhook:", error);
+  }
 });

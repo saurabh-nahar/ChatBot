@@ -10,6 +10,10 @@ app.use(express.json());
 
 const port = 8080;
 
+app.get('/', (req, res)=>{
+  res.send("working")
+})
+
 app.post(`/`, async (req, res) => {
   const { message } = req.body;
 
@@ -55,6 +59,7 @@ app.post(`/`, async (req, res) => {
 
   res.sendStatus(200);
 });
+
 
 app.listen(port, async () => {
   console.log(`Server is running on port ${port}`);

@@ -33,13 +33,13 @@ app.post(`/`, async (req, res) => {
       );
       const tokens = moralisResponse.data.result;
 
-      let msg = "Tokens found:\n";
+      let msg = "Tokens found:\n\n";
       tokens.forEach((token) => {
         const balance = parseFloat(token.balance_formatted);
         const value = parseFloat(token.usd_value);
         msg += `Coin: ${token.symbol}, Balance: ${balance.toFixed(
           2
-        )}, Value: ${value.toFixed(2)}\n`;
+        )}, Value: ${value.toFixed(2)}\n\n`;
       });
       await axios.post(`${TELEGRAM_API}${process.env.TOKEN}/sendMessage`, {
         chat_id: chatId,

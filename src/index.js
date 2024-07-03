@@ -35,6 +35,9 @@ app.post(`/`, async (req, res) => {
 
       let msg = "Tokens found:\n\n";
       tokens.forEach((token) => {
+        if(token.possible_spam === true){
+          return
+        }
         const balance = parseFloat(token.balance_formatted);
         const value = parseFloat(token.usd_value);
         msg += `Coin: ${token.symbol}, Balance: ${balance.toFixed(

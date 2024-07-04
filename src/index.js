@@ -20,7 +20,6 @@ app.post(`/`, async (req, res) => {
   if (message && message.text) {
     const chatId = message.chat.id;
     const address = message.text;
-    console.log(address);
 
     try {
       const moralisResponse = await axios.get(
@@ -42,7 +41,7 @@ app.post(`/`, async (req, res) => {
         const value = parseFloat(token.usd_value);
         msg += `Coin: ${token.symbol}, Balance: ${balance.toFixed(
           2
-        )}, Value: ${value.toFixed(2)}\n\n`;
+        )}, Value: $${value.toFixed(2)}\n\n`;
       });
       await axios.post(`${TELEGRAM_API}${process.env.TOKEN}/sendMessage`, {
         chat_id: chatId,
